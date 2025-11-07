@@ -1,0 +1,8 @@
+[
+  {
+    "reportName": "CXL - Qry Gen & Native RT_DA Purchases(RH Purch) PPA Version",
+    "domain": "commercial_ops",
+    "sourceWorkspace": "dev",
+    "targetWorkspace": "test"
+  }
+]
