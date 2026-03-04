@@ -1,16 +1,35 @@
 
 {
   "commercial_ops": {
-    "dev": "da52d16d-eda1-4e98-b296-3d59e34c0d85",
-    "test": "72eb57c7-bea6-4534-bbc2-cbfa983ea961"
+    "dev": "ca2ef699-d717-4347-b850-fe210bb5ab4f",
+    "test": "72eb57c7-bea6-4534-bbc2-cbfa983ea961",
+    "prod": "d993a1bb-f0b1-440b-b50d-b2649750f3c4"
   },
   "distribution": {
-    "dev": "da52d16d-eda1-4e98-b296-3d59e34c0d85",
-    "test": "e0fe2ba0-aef5-49ed-91d7-caae369df40e"
+    "dev": "b1c8905e-3fd0-4215-8dc5-8c72bb285cc3",
+    "test": "e0fe2ba0-aef5-49ed-91d7-caae369df40e",
+    "prod": "06f417f6-03e3-4dad-a11f-955950a8e916"
   },
   "transmission": {
-    "dev": "da52d16d-eda1-4e98-b296-3d59e34c0d85",
-    "test": "55bfe0d8-7827-48a2-b10c-c91c3b3ecf0a"
+    "dev": "b01bdc3b-bf7e-409c-97da-4dae6a2c39f8",
+    "test": "55bfe0d8-7827-48a2-b10c-c91c3b3ecf0a",
+    "prod": "3bfbafb4-6cc0-4f78-a9f3-e07b1a3f5b03"
+  },
+  "customer_relations": {
+    "dev": "1bb6d7fb-53dd-4c20-b96d-d60b3a6a04b3",
+    "test": "b842dc6d-f246-49ea-b22a-97bac38875e7"
+  },
+  "supply_chain": {
+    "dev": "10eb2879-180a-413b-8a73-a43e290ceaf9",
+    "test": "e181fef0-0ec2-442a-b0cf-51ba446c6318"
+  },
+  "hr": {
+    "dev": "a687e65c-e28c-4ac4-b2e8-c8f7770231a0",
+    "test": "3b599aba-158a-4eea-9400-c02853e8f568"
+  },
+  "finance": {
+    "dev": "7f79ffb6-99a1-4627-b5f4-354d8b9d0e69",
+    "test": "6f8f2b6f-f3be-4475-8b8b-ba7eff14b71a"
   }
 }
 

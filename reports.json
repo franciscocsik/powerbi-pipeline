@@ -1,8 +1,8 @@
 [
   {
-    "reportName": "C.1.03 Total Customer Counts",
-    "domain": "distribution",
-    "sourceWorkspace": "dev",
-    "targetWorkspace": "test"
+    "reportName": "CXL - Capacity",
+    "domain": "commercial_ops",
+    "sourceWorkspace": "prod",
+    "targetWorkspace": "dev"
   }
 ]
