@@ -3,6 +3,13 @@
     "reportName": "CXL - Capacity",
     "domain": "commercial_ops",
     "sourceWorkspace": "prod",
-    "targetWorkspace": "dev"
+    "targetWorkspace": "dev",
+    "parameters": {
+      "HTTPPath": "/sql/1.0/warehouses/COMPLETAR",
+      "Server": "adb-COMPLETAR.azuredatabricks.net",
+      "DefaultCatalog": "COMPLETAR",
+      "Schema": "COMPLETAR",
+      "Schema_2": null
+    }
   }
 ]

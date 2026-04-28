@@ -1,5 +1,6 @@
 import os
 import re
+import time
 import requests
 from urllib.parse import quote_plus
 from urllib.parse import quote
@@ -37,21 +38,64 @@ def export_report(report_name, workspace_id, access_token):
 
 def import_report(file_path, report_name, workspace_id, access_token):
     encoded_report_name = quote(report_name, safe='').replace('.', '%2E')
-
-    url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports?datasetDisplayName={encoded_report_name}&nameConflict=CreateOrOverwrite"
-    print(url)
-    headers = {
-        "Authorization": f"Bearer {access_token}"
-    }
+    url = (
+        f"{API_BASE}/groups/{workspace_id}/imports"
+        f"?datasetDisplayName={encoded_report_name}&nameConflict=CreateOrOverwrite"
+    )
+    headers = {"Authorization": f"Bearer {access_token}"}
 
     with open(file_path, "rb") as pbix_file:
-        files = {"file": pbix_file}
-        print(files)
-        response = requests.post(url, headers=headers, files=files)
-        print(response)
+        response = requests.post(url, headers=headers, files={"file": pbix_file})
 
     response.raise_for_status()
-    print(f"Importing '{report_name}' to {workspace_id}")
+    import_id = response.json()["id"]
+    print(f"Importing '{report_name}' to workspace {workspace_id} (import ID: {import_id})")
+    return import_id
+
+def wait_for_import(import_id, workspace_id, access_token, timeout_seconds=120, poll_interval=3):
+    url = f"{API_BASE}/groups/{workspace_id}/imports/{import_id}"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    elapsed = 0
+
+    while elapsed < timeout_seconds:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        body = response.json()
+        state = body.get("importState")
+
+        if state == "Succeeded":
+            datasets = body.get("datasets", [])
+            if not datasets:
+                raise RuntimeError(f"Import {import_id} succeeded but returned no datasets.")
+            dataset_id = datasets[0]["id"]
+            print(f"Import succeeded. Dataset ID: {dataset_id}")
+            return dataset_id
+
+        if state in ("Failed", "TimedOut"):
+            raise RuntimeError(f"Import {import_id} ended with state '{state}'. Response: {body}")
+
+        print(f"Import state: '{state}'. Waiting {poll_interval}s...")
+        time.sleep(poll_interval)
+        elapsed += poll_interval
+
+    raise RuntimeError(f"Import {import_id} did not complete within {timeout_seconds} seconds.")
+
+def update_semantic_model_parameters(dataset_id, workspace_id, parameters, access_token):
+    update_details = [
+        {"name": name, "newValue": value}
+        for name, value in parameters.items()
+        if value is not None and value != ""
+    ]
+
+    if not update_details:
+        print(f"No parameters to update for dataset {dataset_id}. Skipping.")
+        return
+
+    url = f"{API_BASE}/groups/{workspace_id}/datasets/{dataset_id}/Default.UpdateParameters"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.post(url, headers=headers, json={"updateDetails": update_details})
+    response.raise_for_status()
+    print(f"Updated parameters {[d['name'] for d in update_details]} on dataset {dataset_id}")
 
 # def import_report(file_path, report_name, workspace_id, access_token):
 #     base_url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports"
