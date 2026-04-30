@@ -1,7 +1,11 @@
 from msal import PublicClientApplication
 import requests
 import json
-from utils import export_report, import_report, sanitize_name, getObjectsWithName, deleteObjectsWithName
+from utils import (
+    export_report, import_report, sanitize_name,
+    getObjectsWithName, deleteObjectsWithName,
+    wait_for_import, update_semantic_model_parameters,
+)
 import time
 
 # Datos de tu tenant y tu cuenta
@@ -55,5 +59,12 @@ for report in reports:
     deleteObjectsWithName(oldReports, 'reports', target_workspace_id, access_token)
     deleteObjectsWithName(oldDatasets, 'datasets', target_workspace_id, access_token)
 
-    import_report(file_path, report_name, target_workspace_id, access_token)
+    import_id = import_report(file_path, report_name, target_workspace_id, access_token)
+
+    parameters = report.get("parameters")
+    if parameters:
+        dataset_id = wait_for_import(import_id, target_workspace_id, access_token)
+        update_semantic_model_parameters(dataset_id, target_workspace_id, parameters, access_token)
+    else:
+        print(f"No parameter configuration for '{report_name}'. Skipping parameter update.")
 
