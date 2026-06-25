@@ -120,16 +120,6 @@ You can define **multiple reports in the same run** — the pipeline processes t
 
 ---
 
-## Known limitations
-
-> [!WARNING]
-> **Reports with special characters in their name get truncated after migration.**
-> If a report name contains special characters (e.g. `-`, `&`, `(`, `)`, `#`), Power BI may truncate the name at the first special character when importing it into the target workspace. For example, a report named `CXL - Capacity` might appear as `CXL ` in the target workspace.
->
-> If this happens, you will need to **manually rename the report** in the target workspace after the migration completes.
-
----
-
 ## Project structure
 
 ```

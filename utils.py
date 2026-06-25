@@ -37,15 +37,20 @@ def export_report(report_name, workspace_id, access_token):
     return file_path
 
 def import_report(file_path, report_name, workspace_id, access_token):
-    encoded_report_name = quote(report_name, safe='').replace('.', '%2E')
-    url = (
-        f"{API_BASE}/groups/{workspace_id}/imports"
-        f"?datasetDisplayName={encoded_report_name}&nameConflict=CreateOrOverwrite"
-    )
+    # Power BI truncates datasetDisplayName at special characters (dots, hyphens, spaces, etc.).
+    # quote(safe='') encodes all of them. We assign the URL directly to the PreparedRequest
+    # to bypass requests' requote_uri(), which would decode percent-encoded chars back.
+    encoded_name = ''.join(c if c.isalnum() else f'%{ord(c):02X}' for c in report_name)
+    base_url = f"{API_BASE}/groups/{workspace_id}/imports"
     headers = {"Authorization": f"Bearer {access_token}"}
 
     with open(file_path, "rb") as pbix_file:
-        response = requests.post(url, headers=headers, files={"file": pbix_file})
+        req = requests.Request('POST', base_url, headers=headers,
+                               files={"file": ("report.pbix", pbix_file)})
+        prepared = req.prepare()
+        prepared.url = f"{base_url}?datasetDisplayName={encoded_name}.pbix&nameConflict=CreateOrOverwrite"
+        with requests.Session() as session:
+            response = session.send(prepared)
 
     response.raise_for_status()
     import_id = response.json()["id"]

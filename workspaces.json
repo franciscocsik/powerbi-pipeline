@@ -17,19 +17,23 @@
   },
   "customer_relations": {
     "dev": "1bb6d7fb-53dd-4c20-b96d-d60b3a6a04b3",
-    "test": "b842dc6d-f246-49ea-b22a-97bac38875e7"
+    "test": "b842dc6d-f246-49ea-b22a-97bac38875e7",
+    "prod": "0a3b7dd8-6d91-4320-955e-9d11605ad8a1"
   },
   "supply_chain": {
     "dev": "10eb2879-180a-413b-8a73-a43e290ceaf9",
-    "test": "e181fef0-0ec2-442a-b0cf-51ba446c6318"
+    "test": "e181fef0-0ec2-442a-b0cf-51ba446c6318",
+    "prod": "11d541ff-08ba-49a2-845f-ce6b4b0bf47c"
   },
-  "hr": {
+  "human_resources": {
     "dev": "a687e65c-e28c-4ac4-b2e8-c8f7770231a0",
-    "test": "3b599aba-158a-4eea-9400-c02853e8f568"
+    "test": "3b599aba-158a-4eea-9400-c02853e8f568",
+    "prod": "6feb36d9-62ee-454f-a877-5ff8b5281b6e"
   },
   "finance": {
     "dev": "7f79ffb6-99a1-4627-b5f4-354d8b9d0e69",
-    "test": "6f8f2b6f-f3be-4475-8b8b-ba7eff14b71a"
+    "test": "6f8f2b6f-f3be-4475-8b8b-ba7eff14b71a",
+    "prod": "8e15238e-7275-4358-af44-706157d432dd"
   }
 }
 

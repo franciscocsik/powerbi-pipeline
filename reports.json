@@ -1,15 +1,14 @@
 [
   {
-    "reportName": "CXL - Capacity",
-    "domain": "commercial_ops",
-    "sourceWorkspace": "prod",
-    "targetWorkspace": "dev",
+    "reportName": "2.08 Conform - Step 1 Reconciliation for SAP",
+    "domain": "finance",
+    "sourceWorkspace": "dev",
+    "targetWorkspace": "prod",
     "parameters": {
-      "HTTPPath": "/sql/1.0/warehouses/COMPLETAR",
-      "Server": "adb-COMPLETAR.azuredatabricks.net",
-      "DefaultCatalog": "COMPLETAR",
-      "Schema": "COMPLETAR",
-      "Schema_2": null
+      "HTTPPath": "/sql/1.0/warehouses/22c10bda745e9df9",
+      "Server": "dbc-1b8ccdbb-871b.cloud.databricks.com",
+      "DefaultCatalog": "prd_mart_zone",
+      "Schema": "fin_bill"
     }
   }
 ]
