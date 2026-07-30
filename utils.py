@@ -44,7 +44,17 @@ def import_report(file_path, report_name, workspace_id, access_token):
     base_url = f"{API_BASE}/groups/{workspace_id}/imports"
     headers = {"Authorization": f"Bearer {access_token}"}
 
-    with open(file_path, "rb") as pbix_file:
+    # OneDrive/Defender may hold a transient lock on the freshly-written .pbix.
+    for attempt in range(5):
+        try:
+            pbix_file = open(file_path, "rb")
+            break
+        except PermissionError:
+            if attempt == 4:
+                raise
+            time.sleep(2 ** attempt)
+
+    with pbix_file:
         req = requests.Request('POST', base_url, headers=headers,
                                files={"file": ("report.pbix", pbix_file)})
         prepared = req.prepare()

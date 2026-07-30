@@ -1,14 +1,18 @@
 [
-  {
-    "reportName": "2.08 Conform - Step 1 Reconciliation for SAP",
+    {
+    "reportName": "8.2A Audit - Sales Invoice Jurisdiction Exemption Detail",
     "domain": "finance",
-    "sourceWorkspace": "dev",
+    "sourceWorkspace": "test",
     "targetWorkspace": "prod",
     "parameters": {
       "HTTPPath": "/sql/1.0/warehouses/22c10bda745e9df9",
       "Server": "dbc-1b8ccdbb-871b.cloud.databricks.com",
       "DefaultCatalog": "prd_mart_zone",
-      "Schema": "fin_bill"
+      "Schema": "fin_bill",
+      "Schema2": "fin_bill",
+      "WorkspaceID": "8e15238e-7275-4358-af44-706157d432dd",
+      "TargetPageID": "b39d81c09b91826d4274",
+      "TargetReportID": "8a01d3b6-b899-4ddf-a771-b621b46f7b6f"
     }
   }
 ]

@@ -1,6 +1,7 @@
 from msal import PublicClientApplication
 import requests
 import json
+import os
 from utils import (
     export_report, import_report, sanitize_name,
     getObjectsWithName, deleteObjectsWithName,
@@ -60,6 +61,12 @@ for report in reports:
     deleteObjectsWithName(oldDatasets, 'datasets', target_workspace_id, access_token)
 
     import_id = import_report(file_path, report_name, target_workspace_id, access_token)
+
+    try:
+        os.remove(file_path)
+        print(f"Deleted local file '{file_path}'")
+    except OSError as e:
+        print(f"Warning: could not delete '{file_path}': {e}")
 
     parameters = report.get("parameters")
     if parameters:

@@ -34,6 +34,12 @@
     "dev": "7f79ffb6-99a1-4627-b5f4-354d8b9d0e69",
     "test": "6f8f2b6f-f3be-4475-8b8b-ba7eff14b71a",
     "prod": "8e15238e-7275-4358-af44-706157d432dd"
+  },
+  "customer_and_call_center": {
+      "dev": "1bb6d7fb-53dd-4c20-b96d-d60b3a6a04b3",
+      "test": "b842dc6d-f246-49ea-b22a-97bac38875e7",
+      "prod_deprecated": "69933e9f-28f6-41be-921b-db0d3c8a99c5",
+      "prod": "0a3b7dd8-6d91-4320-955e-9d11605ad8a1"
   }
 }
 
