@@ -1,0 +1,232 @@
+[
+  {
+    "file": "1.1 Error - Summary Log.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "1.2 Error - Details Log (Filters).pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "1.2 Error - Details Log.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "1.2A Error - Invoices Summary.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "1.2B Error Invoices - Detail (Filters).pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "1.2B Error Invoices - Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.01 Conform - Financial Data Quality Overview.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.02 Conform - Financial Data by GL Account.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.05 Conform - SAP Reconciliation.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.07 Conform - CRS Bridge Report.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.08 Conform - Step 1 Reconciliation for SAP.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.09 Conform - SAP Use Tax Accrual Accounts.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.1 Conform - Sales Invoices.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.2 Conform - Sales Invoice Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.3 Conform - Purchase Invoices.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.4 Conform - Purchase Invoice Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "2.5 Conform - Pre-Conform Adjustments.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "3.1 Aggregate - Summary by State and Jurisdiction.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "3.5 Aggregate - Historical Tax Variance Analysis.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "3.6 Aggregate - Calculated Tax Variance.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "3.8 Aggregate - Home Rule OTHER Exemptions.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "3.9 Aggregate - Exempt Sales Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.1 Audit - Sales Summary.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.2 Audit - Sales Invoice Jurisdiction Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.2A Audit - Sales Invoice Jurisdiction Exemption Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.3 Audit - Sales Invoice Lines Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.4 Audit - Purchases Summary.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.5 Audit - Purchases Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.6 Audit - Sales Metrics.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.7 Audit - Purchases Metrics.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.9 Audit - Addresses by Jurisdiction.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.A Audit - Vendor Invoice Stratification.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "8.B Audit - Vendors with Invoices Over a Specified Amount.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "ER Line Detail.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Misc - South Dakota Excise Tax.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Misc - Texas Gross Receipts.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Audit Scope Definition (1).pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Audit Scope Definition.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Company Source-to-ARR Mapping.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Exemption Reason Mapping.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Jurisdiction Source-to-ARR Mapping.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Jurisdiction Tax Rates.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Tax Jurisdiction Composites.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Tax Jurisdictions.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Tax Territory Composites.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  },
+  {
+    "file": "Reference - Territory Source-to-ARR Mappings.pbix",
+    "domain": "finance",
+    "targetWorkspace": "sandbox"
+  }
+]

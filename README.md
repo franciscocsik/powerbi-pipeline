@@ -1,6 +1,6 @@
 # Power BI Migration Pipeline
 
-A Python script that automates the migration of Power BI reports between workspaces (e.g. from `prod` to `dev`, or `dev` to `test`). After importing each report, it optionally updates the semantic model's connection parameters in the target workspace.
+A Python script that automates the migration of Power BI reports between workspaces (e.g. from `prod` to `dev`, or `dev` to `test`) and, optionally, the publishing of local `.pbix` files to any target workspace. After importing each report, it optionally updates the semantic model's connection parameters in the target workspace.
 
 ---
 
@@ -105,7 +105,7 @@ You can define **multiple reports in the same run** — the pipeline processes t
 | `targetWorkspace` | Environment to migrate to (`dev`, `test`, or `prod`) |
 | `parameters` | *(Optional)* Connection parameters to update on the semantic model after migration |
 
-#### About the `parameters` block
+#### About the `parameters` block <a id="about-the-parameters-block"></a>
 
 - The `parameters` block is **entirely optional**. If omitted (like the `HR Report` example above), the report is migrated as-is and no parameter update is attempted.
 - You only need to include the parameters you want to update. Any parameters present in the semantic model that are **not listed here will remain unchanged** — they keep whatever values they had in the source workspace after migration.
@@ -120,11 +120,64 @@ You can define **multiple reports in the same run** — the pipeline processes t
 
 ---
 
+## Uploading local `.pbix` files
+
+In addition to migrating reports between workspaces, the pipeline can publish `.pbix` files sitting in the local `upload/` folder to any target workspace. This runs **after** the workspace-to-workspace migration and is entirely optional — if `upload/reports.json` does not exist, this step is skipped.
+
+### How it works
+
+For each entry in `upload/reports.json`, the pipeline:
+
+1. Reads the `.pbix` file from the `upload/` folder
+2. Derives the report name from the file name (without the `.pbix` extension)
+3. Deletes the existing report and dataset in the target workspace (if any)
+4. Imports the `.pbix` into the target workspace
+5. If `parameters` are defined, waits for the import to complete and updates the semantic model's connection parameters
+
+The `.pbix` file is **not deleted** from `upload/` after publishing, so the same batch can be re-run without recopying files.
+
+### `upload/reports.json`
+
+```json
+[
+  {
+    "file": "Sales Dashboard.pbix",
+    "domain": "commercial_ops",
+    "targetWorkspace": "dev",
+    "parameters": {
+      "HTTPPath": "/sql/1.0/warehouses/abc123",
+      "Server": "adb-1234567890.12.azuredatabricks.net"
+    }
+  },
+  {
+    "file": "HR Report.pbix",
+    "domain": "hr",
+    "targetWorkspace": "test"
+  }
+]
+```
+
+**Field reference:**
+
+| Field | Description |
+|---|---|
+| `file` | Exact name of the `.pbix` file inside `upload/`. The report name in Power BI is derived from this by removing the `.pbix` extension |
+| `domain` | Domain key as defined in `workspaces.json` |
+| `targetWorkspace` | Environment to publish to (`dev`, `test`, `prod`, `sandbox`, …) |
+| `parameters` | *(Optional)* Connection parameters to update on the semantic model after upload. Same rules as the migration flow — see the [`parameters` block](#about-the-parameters-block) section above |
+
+There is no `sourceWorkspace` field because the `.pbix` is read from disk.
+
+---
+
 ## Project structure
 
 ```
-├── main.py           # Entry point — orchestrates the full migration flow
-├── utils.py          # Power BI API helper functions
-├── reports.json      # List of reports to migrate with their configuration
-└── workspaces.json   # Workspace ID mapping by domain and environment
+├── main.py               # Entry point — orchestrates the full migration flow
+├── utils.py              # Power BI API helper functions
+├── reports.json          # List of reports to migrate with their configuration
+├── workspaces.json       # Workspace ID mapping by domain and environment
+└── upload/
+    ├── reports.json      # (Optional) List of local .pbix files to publish
+    └── *.pbix            # Local report files ready to publish
 ```
