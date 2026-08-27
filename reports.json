@@ -1,3 +1,28 @@
 [
-
+    {
+        "reportName": "Weekly Aged Debt - Active",
+        "domain": "customer_relations",
+        "sourceWorkspace": "test",
+        "targetWorkspace": "prod",
+        "parameters": {
+            "HTTPPath": "/sql/1.0/warehouses/22c10bda745e9df9",
+            "Server": "dbc-1b8ccdbb-871b.cloud.databricks.com",
+            "Catalog": "prd_mart_zone",
+            "Schema": "customer_enterprise",
+            "DaysOld": "56"
+        }
+    },
+    {
+        "reportName": "Weekly Aged Debt - Inactive",
+        "domain": "customer_relations",
+        "sourceWorkspace": "test",
+        "targetWorkspace": "prod",
+        "parameters": {
+            "HTTPPath": "/sql/1.0/warehouses/22c10bda745e9df9",
+            "Server": "dbc-1b8ccdbb-871b.cloud.databricks.com",
+            "Catalog": "prd_mart_zone",
+            "Schema": "customer_enterprise",
+            "DaysOld": "56"
+        }
+    }
 ]
