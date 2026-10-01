@@ -1,0 +1,7 @@
+{
+  "customer_relations": "customer_enterprise",
+  "customer_and_call_center": "cust_interac",
+  "distribution": "distribution_enterprise",
+  "transmission": "transmission_enterprise",
+  "finance": "fin_bill"
+}

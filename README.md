@@ -116,7 +116,30 @@ You can define **multiple reports in the same run** — the pipeline processes t
 > **Parameter names can vary between reports even when they represent the same concept.**
 > For example, some semantic models use `DefaultCatalog` while others use `Catalog` — both refer to the same database catalog but are defined differently in each `.pbix` file. Using the wrong name will cause a 404 error when the pipeline tries to update the parameters.
 >
-> Before running the migration, verify the exact parameter names for each report by opening it in **Power BI Desktop → Transform Data → Manage Parameters**. Use those exact names in `reports.json`.
+> The recommended way to build `reports.json` is to use the **`/build-reports-json` Claude Code skill** (see section below), which queries Power BI Service directly to extract the exact parameter names for each report automatically.
+
+---
+
+## Building `reports.json` with the Claude Code skill
+
+This repository includes a Claude Code skill that automates the creation of `reports.json`, eliminating manual lookups and reducing the risk of typos.
+
+**How to invoke it** (requires [Claude Code](https://claude.com/claude-code)):
+
+```
+/build-reports-json
+```
+
+**What it does:**
+
+1. Guides you through a set of questions: report names, domains, source/target workspaces, and connection string values
+2. Authenticates with Power BI Service via your Microsoft account (browser login)
+3. Looks up the exact report names, parameter names, and current parameter values directly from the source workspace
+4. Generates a validated `reports.json`, shows a diff against the existing file, and saves only after your confirmation
+
+Supports **overwrite mode** (replace the full file) and **incremental mode** (add reports to the existing file).
+
+For full details on the skill flow see [`.claude/skills/build-reports-json/SKILL.md`](.claude/skills/build-reports-json/SKILL.md).
 
 ---
 
@@ -177,7 +200,15 @@ There is no `sourceWorkspace` field because the `.pbix` is read from disk.
 ├── utils.py              # Power BI API helper functions
 ├── reports.json          # List of reports to migrate with their configuration
 ├── workspaces.json       # Workspace ID mapping by domain and environment
-└── upload/
-    ├── reports.json      # (Optional) List of local .pbix files to publish
-    └── *.pbix            # Local report files ready to publish
+├── upload/
+│   ├── reports.json      # (Optional) List of local .pbix files to publish
+│   └── *.pbix            # Local report files ready to publish (git-ignored)
+└── .claude/
+    └── skills/
+        └── build-reports-json/     # /build-reports-json Claude Code skill
+            ├── SKILL.md            # Skill instructions and flow
+            ├── omit-params.json    # Parameter names excluded from reports.json
+            ├── domain-schema-defaults.json  # Default schema value per domain
+            └── scripts/
+                └── pbi_query.py    # Read-only Power BI Service query helper
 ```
